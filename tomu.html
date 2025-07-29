@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To Tawsin Toma 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to top right, #ffe0f0, #fff0e0);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease forwards;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .gallery img {
+      width: 120px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing-container {
+      font-size: 1.8rem;
+      color: #d63384;
+      max-width: 90vw;
+      margin: 0 auto;
+      z-index: 1;
+      animation: fadeIn 2s ease 2s forwards;
+      opacity: 0;
+    }
+
+    .popup {
+      margin-top: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8rem;
+      color: #ff4081;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: appear 2s ease-in-out 4s forwards;
+      z-index: 1;
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: appear 1.5s ease 6s forwards;
+      z-index: 1;
+    }
+
+    .buttons button {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 25px;
+      background: #ff80ab;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .buttons button:hover {
+      background: #e91e63;
+      transform: scale(1.05);
+    }
+
+    .sparkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleMove 8s linear infinite;
+    }
+
+    @keyframes sparkleMove {
+      from {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .typing-container {
+        font-size: 1.2rem;
+      }
+
+      .popup {
+        font-size: 2rem;
+      }
+
+      .buttons button {
+        font-size: 1rem;
+        padding: 10px 18px;
+      }
+
+      .gallery img {
+        width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="dendelion.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Images -->
+  <div class="gallery">
+    <img src="Tomu 1.png" alt="Smiling Toma">
+    <img src="Tomu 2.png" alt="Toma with flower">
+    <img src="Tomu 3.png" alt="Toma candid">
+  </div>
+
+  <!-- Typing text (no animation, fade in instead) -->
+  <div class="typing-container">Hey Tawsin Toma, there’s something I must say... 💌</div>
+
+  <!-- Proposal line -->
+  <div class="popup">Would you be the magic in my story? 💖</div>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <button onclick="alert('I knew it 😍')">Yes, I will!</button>
+    <button onclick="alert('Take your time, I’ll wait 😊')">Maybe...</button>
+  </div>
+
+  <!-- Sparkles -->
+  <div class="sparkles" id="sparkle-container"></div>
+
+  <!-- Sparkle generation -->
+  <script>
+    const sparkleContainer = document.getElementById("sparkle-container");
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.animationDelay = `${Math.random() * 8}s`;
+      sparkle.style.width = sparkle.style.height = `${Math.random() * 6 + 4}px`;
+      sparkleContainer.appendChild(sparkle);
+    }
+  </script>
+
+</body>
+</html>
