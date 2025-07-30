@@ -4,104 +4,112 @@
   <meta charset="UTF-8">
   <title>To Tawsin Toma 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background: linear-gradient(to top right, #ffe0f0, #fff0e0);
-      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: linear-gradient(to top right, #ffdde1, #fff1eb);
+      font-family: 'Poppins', sans-serif;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      height: 100vh;
+      flex-direction: column;
       overflow: hidden;
       position: relative;
-      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px 40px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
     }
 
     .gallery {
       display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-      animation: fadeIn 2s ease forwards;
-      flex-wrap: wrap;
       justify-content: center;
-      z-index: 1;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     .gallery img {
       width: 120px;
-      height: auto;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
+      box-shadow: 0 0 12px #fff8;
+      transition: transform 0.4s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 20px #ffc0cb;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .typing-container {
-      font-size: 1.8rem;
+    .typing-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
       color: #d63384;
-      max-width: 90vw;
-      margin: 0 auto;
-      z-index: 1;
-      animation: fadeIn 2s ease 2s forwards;
-      opacity: 0;
+      margin: 20px 0;
+      border-right: 2px solid #d63384;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 5s steps(40, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     .popup {
-      margin-top: 20px;
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.8rem;
+      font-size: 2.3rem;
       color: #ff4081;
       opacity: 0;
-      transform: scale(0.8);
-      animation: appear 2s ease-in-out 4s forwards;
-      z-index: 1;
+      animation: popup 2s ease 5s forwards;
+      font-family: 'Great Vibes', cursive;
     }
 
-    @keyframes appear {
+    @keyframes popup {
       to {
         opacity: 1;
-        transform: scale(1.1);
+        transform: scale(1.05);
       }
     }
 
     .buttons {
       margin-top: 25px;
       display: flex;
+      justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
       opacity: 0;
-      animation: appear 1.5s ease 6s forwards;
-      z-index: 1;
+      animation: popup 1.5s ease 7s forwards;
     }
 
     .buttons button {
       padding: 12px 24px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       border: none;
       border-radius: 25px;
       background: #ff80ab;
       color: white;
       cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      transition: 0.3s ease;
     }
 
     .buttons button:hover {
@@ -109,32 +117,41 @@
       transform: scale(1.05);
     }
 
-    .sparkles {
+    .floating-heart {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
     }
 
-    .sparkle {
+    .floating-heart::before, .floating-heart::after {
+      content: '';
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
+      width: 20px;
+      height: 20px;
+      background: pink;
       border-radius: 50%;
-      opacity: 0.8;
-      animation: sparkleMove 8s linear infinite;
     }
 
-    @keyframes sparkleMove {
-      from {
-        transform: translateY(100vh) scale(1);
+    .floating-heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .floating-heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1) rotate(45deg);
         opacity: 1;
       }
-      to {
-        transform: translateY(-10vh) scale(0.5);
+      100% {
+        transform: translateY(-100vh) scale(1.5) rotate(360deg);
         opacity: 0;
       }
     }
@@ -143,67 +160,57 @@
       display: none;
     }
 
-    @media (max-width: 480px) {
-      .typing-container {
-        font-size: 1.2rem;
-      }
-
-      .popup {
-        font-size: 2rem;
-      }
-
-      .buttons button {
-        font-size: 1rem;
-        padding: 10px 18px;
-      }
-
-      .gallery img {
-        width: 90px;
-      }
+    @media (max-width: 600px) {
+      .popup { font-size: 1.8rem; }
+      .typing-text { font-size: 1.5rem; }
+      .gallery img { width: 100px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background music -->
-  <audio autoplay loop>
+  <div class="card">
+    <div class="gallery">
+      <img src="Tomu 1.png" alt="Toma 1">
+      <img src="Tomu 2.png" alt="Toma 2">
+      <img src="Tomu 3.png" alt="Toma 3">
+    </div>
+
+    <div class="typing-text">Hey Tawsin Toma... there's something I must say 💌</div>
+    <div class="popup">Will you be the love in my forever story? 💖</div>
+
+    <div class="buttons">
+      <button onclick="alert('I knew it 😍')">Yes, I will!</button>
+      <button onclick="alert('Take your time, I’ll wait 😊')">Maybe...</button>
+    </div>
+  </div>
+
+  <!-- Music autoplay after first interaction -->
+  <audio id="bgMusic" autoplay loop>
     <source src="dendelion.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
-  <!-- Images -->
-  <div class="gallery">
-    <img src="Tomu 1.png" alt="Smiling Toma">
-    <img src="Tomu 2.png" alt="Toma with flower">
-    <img src="Tomu 3.png" alt="Toma candid">
-  </div>
-
-  <!-- Typing text (no animation, fade in instead) -->
-  <div class="typing-container">Hey Tawsin Toma, there’s something I must say... 💌</div>
-
-  <!-- Proposal line -->
-  <div class="popup">Would you be the magic in my story? 💖</div>
-
-  <!-- Buttons -->
-  <div class="buttons">
-    <button onclick="alert('I knew it 😍')">Yes, I will!</button>
-    <button onclick="alert('Take your time, I’ll wait 😊')">Maybe...</button>
-  </div>
-
-  <!-- Sparkles -->
-  <div class="sparkles" id="sparkle-container"></div>
-
-  <!-- Sparkle generation -->
+  <!-- Floating hearts generator -->
   <script>
-    const sparkleContainer = document.getElementById("sparkle-container");
-    for (let i = 0; i < 30; i++) {
-      const sparkle = document.createElement("div");
-      sparkle.classList.add("sparkle");
-      sparkle.style.left = `${Math.random() * 100}%`;
-      sparkle.style.animationDelay = `${Math.random() * 8}s`;
-      sparkle.style.width = sparkle.style.height = `${Math.random() * 6 + 4}px`;
-      sparkleContainer.appendChild(sparkle);
+    const body = document.body;
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${5 + Math.random() * 3}s`;
+      body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
     }
+
+    setInterval(createHeart, 500);
+
+    // Music policy workaround
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bgMusic');
+      audio.play().catch(() => {});
+    }, { once: true });
   </script>
 
 </body>
